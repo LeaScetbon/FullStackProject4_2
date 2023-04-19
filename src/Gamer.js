@@ -25,30 +25,36 @@ export class Gamer extends React.Component {
   handleClick = (operation) => {
     switch (operation) {
       case '+1':
-        this.setState({ number: Math.floor(this.state.number + 1) });
+        this.setState({ number: Math.floor(this.state.number + 1) }, this.checkScore);
         break;
       case '-1':
-        this.setState({ number: Math.floor(this.state.number - 1) });
+        this.setState({ number: Math.floor(this.state.number - 1) }, this.checkScore);
         break;
       case '*2':
-        this.setState({ number: Math.floor(this.state.number * 2) });
+        this.setState({ number: Math.floor(this.state.number * 2) }, this.checkScore);
         break;
       case '/2':
-        this.setState({ number: Math.floor(this.state.number / 2) });
+        this.setState({ number: Math.floor(this.state.number / 2) }, this.checkScore);
         break;
       default:
         break;
     }
     this.setState({ steps : this.state.steps + 1 });
-    if (this.state.number >= 100) {
-        const newScore = [...this.state.score, this.state.steps];
-        this.setState({ score: newScore });
-        this.setState({ steps: 0 });
-        this.setState({ number: Math.floor(Math.random() * (99)) });
-        alert (this.state.name + ' won!')
+   
 
       }
-  }
+      checkScore = () => {
+        if (this.state.number >= 100) {
+          const newScore = [...this.state.score, this.state.steps];
+          this.setState({ score: newScore });
+          this.setState({ steps: 0 });
+          this.setState({ number: Math.floor(Math.random() * (99)) });
+          alert (this.state.name + ' won!');
+        }
+      
+      }
+      
+  
 
   render() {
     const scores = this.state.score.join(', ');
