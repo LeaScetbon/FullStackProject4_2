@@ -22,8 +22,6 @@ export class App extends React.Component {
 
   render() {
     return (
-
-      
         <div id="App" className="App">
         <Screen onAdd={this.handleAddGamer}/>
         <GamerPanel gamers={this.state.gamers} />

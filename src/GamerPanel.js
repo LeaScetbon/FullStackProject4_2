@@ -22,8 +22,8 @@ class GamerPanel extends React.Component {
   }
 
   handleDeleteGamer = (name) => {
-    
-    
+
+
   }
 
   render() {
@@ -45,12 +45,15 @@ class GamerPanel extends React.Component {
       </li>
     ));
 
+    // var score = [];
+    // for (var i = 0; i < gamers.length; i++) {
+    //   score += [gamers[i].content.state.name, gamers[i].content.state.score];
+    // }
+    // console.log(score);
+
     return (
       <div>
-        {/* {this.state.gamers.map((gamer, index) => (
-          <Gamer key={index} name={gamer} isCurrentTurn={index === this.state.turnIndex}/>
-        ))} */}
-        <ul>{gamers}</ul>
+        <ul style={{listStyleType:"none", display: "flex", justifyContent: "space-around", padding: '20px', margin: 'auto' }}>{gamers}</ul>
       </div>
     );
   }

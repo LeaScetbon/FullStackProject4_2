@@ -9,16 +9,16 @@ export class Screen extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showForm: false,
+      showForm: true,
       name: '',
       inGame: true
     };
-    this.handleButtonClick = this.handleButtonClick.bind(this);
+    //this.handleButtonClick = this.handleButtonClick.bind(this);
   }
 
-  handleButtonClick() {
-    this.setState({ showForm: true });
-  }
+  // handleButtonClick() {
+  //   this.setState({ showForm: true });
+  // }
 
   handleClickStart = () => {
     this.setState({ showForm: false });
@@ -33,30 +33,29 @@ export class Screen extends React.Component {
     event.preventDefault();
     this.props.onAdd(this.state.name);
     this.setState({ name: '' });
+    // this.setState({ showForm: true });
   };
 
   render() {
     return (
-      <div className='buttonStyleClass'>
-        <button onClick={this.handleClickStart} disabled={(!this.state.inGame)}>Start new Game</button>
-        <button onClick={this.handleButtonClick} disabled={(!this.state.inGame)}>Add Gamer</button>
+      <div className='Screen'>
+        <h2>Get To 100!</h2>
+        {/* <button className='buttonStyleClass' onClick={this.handleButtonClick} disabled={(!this.state.inGame)}>Add Gamer</button> */}
+
         {this.state.showForm && (
-          <form onSubmit={this.handleSubmit} >
-            <label>Name:
-              <input type="text" value={this.state.name} onChange={this.handleClickName} />
-            </label>
-            <button type="submit">Add</button>
-          </form>
-        )}
-        {/* <label>Name:
-          <input type="text" id="fname" name="firstname" placeholder="Your name.." />
-        </label>
-        <button onClick={this.handleClickName}>Add</button> */}
+          <div style={{ display: "flex", justifyContent: "space-around", padding: '20px', margin: 'auto' }}>
+            <form className='formStyleClass' onSubmit={this.handleSubmit} style={{ display: "flex", justifyContent: "space-around", padding: '20px', margin: 'auto' }} >
+              <label style={{padding: '20px'}}>Name: &nbsp;
+                <input type="text" value={this.state.name} onChange={this.handleClickName} />
+              </label>
+              <button type="submit" className='buttonStyleHeader' disabled={(!this.state.inGame)}>Add Gamer</button>
+            </form>
+            <button className='buttonStyleHeader' onClick={this.handleClickStart} disabled={(!this.state.inGame)}>Start new Game</button>
+          </div>
+        )
+        }
       </div>
-
     );
-
   }
-
 }
 export default Screen;
