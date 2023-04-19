@@ -1,5 +1,6 @@
 import './App.css';
 import React from 'react';
+import Gamer from './Gamer';
 
 
 export class GamePanel extends React.Component {
@@ -14,7 +15,6 @@ export class GamePanel extends React.Component {
   render() {
     return(
         <div> 
-        
         </div>
   
     );
