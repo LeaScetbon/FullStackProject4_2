@@ -6,23 +6,38 @@ import Gamer from './Gamer';
 var gamers=[];
 
 export class Gamer_AddForm extends React.Component {
+   
+    constructor(props) {
+        super(props);
+        this.state = {
+          name: '',
+        };
+      }
+    
 
-    handleClick = (event) => {
-        gamers.push(<Gamer name={event.target.value} />);
-        ReactDOM.render(gamers, document.getElementById('gamersApp'));
+
+    handleClickName = (event) => {
+        // gamers.push(<Gamer name={event.target.value} />);
+        // ReactDOM.render(gamers, document.getElementById('gamersApp'));
+
+        this.setState({ name: event.target.value });
 
     };
+
+    handleSubmit = (event) => {
+        event.preventDefault();
+        this.props.onAdd(this.state.name);
+        this.setState({ name: '' });
+      };
 
     render() {
         return (
             <div >
-                <form target="_self" >
+                <form  onSubmit={this.handleSubmit} >
                     <label>Name:
-                        <input type="text" id="fname" name="firstname" placeholder="Your name.." />
+                        <input type="text"  value={this.state.name}  onChange={this.handleClickName}/>
                     </label>
-                    <label>Email:</label>
-                    <input type="text" id="fname" name="email" placeholder="Email.." />
-                    <button onClick={this.handleClick}>Add</button>
+                    <button type="submit">Add</button>
                 </form>
             </div>
         );
