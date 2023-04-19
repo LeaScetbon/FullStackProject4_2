@@ -14,6 +14,11 @@ export class Gamer extends React.Component {
     };
   }
 
+  handleTurn = event  => {
+    this.props.onTurnEnd();
+   
+  }
+
   handleClick = (operation) => {
     switch (operation) {
       case '+1':
@@ -36,15 +41,17 @@ export class Gamer extends React.Component {
   render() {
     return (
       <div>
-        <h1>Name: {this.state.name} {this.state.enabled}</h1>
+        {/* <h1>Name: {this.state.name} - {this.state.enabled}</h1> */}
+        <h1>Name: {this.state.name} - {this.props.isCurrentTurn===false? "disabled": "enabled"}</h1>
         <h1>Number: {this.state.number}</h1>
         <h1>Steps: {this.state.steps}</h1>
         <h1>Score: {this.state.score}</h1>
-        <h1>Enabled: {this.state.enabled===false? "disabled": "enabled"}</h1>
-        <button onClick={() => this.handleClick('+1')} id='button+1'>+1</button>
-        <button onClick={() => this.handleClick('-1')} id='button-1'>-1</button>
-        <button onClick={() => this.handleClick('*2')} id='button*2'>*2</button>
-        <button onClick={() => this.handleClick('/2')} id='button/2'>/2</button>
+        {console.log(this.props.name)}
+        {console.log(this.state.name)}
+        <button  onClick={() => {this.handleClick('+1'); this.handleTurn()}} id='button+1' disabled={(!this.state.enabled) && (this.state.name !== this.props.currentGamer)}>+1</button> 
+        <button onClick={() => {this.handleClick('-1'); this.handleTurn()}} id='button-1' disabled={(!this.state.enabled) && (this.state.name !== this.props.currentGamer)}>-1</button>
+        <button onClick={() => {this.handleClick('*2'); this.handleTurn()}} id='button*2' disabled={(!this.state.enabled) && (this.state.name !== this.props.currentGamer)}>*2</button>
+        <button onClick={() => {this.handleClick('/2'); this.handleTurn()}} id='button/2' disabled={(!this.state.enabled) && (this.state.name !== this.props.currentGamer)}>/2</button>
       </div>
     );
   }
