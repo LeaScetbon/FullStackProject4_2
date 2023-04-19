@@ -3,39 +3,32 @@ import React from 'react';
 import ReactDOM from "react-dom";
 import Gamer from './Gamer';
 
-var gamers=[];
+var gamers = [];
 
 export class Gamer_AddForm extends React.Component {
-   
     constructor(props) {
         super(props);
         this.state = {
-          name: '',
+            name: '',
         };
-      }
-    
-
+    }
 
     handleClickName = (event) => {
-        // gamers.push(<Gamer name={event.target.value} />);
-        // ReactDOM.render(gamers, document.getElementById('gamersApp'));
-
         this.setState({ name: event.target.value });
-
     };
 
     handleSubmit = (event) => {
         event.preventDefault();
         this.props.onAdd(this.state.name);
         this.setState({ name: '' });
-      };
+    };
 
     render() {
         return (
             <div >
-                <form  onSubmit={this.handleSubmit} >
+                <form onSubmit={this.handleSubmit} >
                     <label>Name:
-                        <input type="text"  value={this.state.name}  onChange={this.handleClickName}/>
+                        <input type="text" value={this.state.name} onChange={this.handleClickName} />
                     </label>
                     <button class='buttonStyleClass' type="submit">Add</button>
                 </form>
