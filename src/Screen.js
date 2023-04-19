@@ -1,5 +1,6 @@
 
 import './App.css';
+import './buttonStyle.css'
 import React from 'react';
 import Gamer_AddForm from './Gamer_AddForm';
 import ReactDOM from "react-dom";
@@ -47,9 +48,9 @@ handleSubmit = (event) => {
 
   render() {
     return (
-      <div>
-        <button onClick={this.handleClickStart}>Start new Game</button>
-        <button onClick={this.handleButtonClick}>Add Gamer</button>
+      <div className='buttonStyleClass'>
+        <button  onClick={this.handleClickStart}>Start new Game</button>
+        <button  onClick={this.handleButtonClick}>Add Gamer</button>
         {this.state.showForm && (
                         <form  onSubmit={this.handleSubmit} >
                             <label>Name:

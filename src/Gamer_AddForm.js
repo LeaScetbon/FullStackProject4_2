@@ -37,7 +37,7 @@ export class Gamer_AddForm extends React.Component {
                     <label>Name:
                         <input type="text"  value={this.state.name}  onChange={this.handleClickName}/>
                     </label>
-                    <button type="submit">Add</button>
+                    <button class='buttonStyleClass' type="submit">Add</button>
                 </form>
             </div>
         );
