@@ -10,7 +10,8 @@ export class Gamer extends React.Component {
       number: Math.floor(Math.random() * (99)),
       steps: 0,
       score: [],
-      enabled: false
+      enabled: false,
+      exist: true 
     };
   }
 
@@ -41,7 +42,11 @@ export class Gamer extends React.Component {
 
   checkScore = () => {
     if (this.state.number === 100) {
-      alert(this.state.name + ' won!');
+        const newScore = [...this.state.score, this.state.steps];
+        this.setState({ score: newScore });
+        this.setState({ steps: 0 });
+        this.setState({ number: Math.floor(Math.random() * (99)) });
+        alert (this.state.name + ' won!');
     }
   }
 
@@ -53,7 +58,7 @@ export class Gamer extends React.Component {
   }
 
   ButtonExit = () => {
-
+    this.setState({exist : false});
   }
 
   render() {
