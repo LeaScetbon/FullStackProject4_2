@@ -90,9 +90,11 @@ class GamerPanel extends React.Component {
     this.setState({ gamers: newGamers });
   }
 
-  handleDeleteGamer = (name) => {
+  handleDeleteGamer = (index) => {
    
-   if ()
+    const newGamers = [...this.state.gamers];
+    newGamers.splice(index, 1);
+    this.setState({ gamers: newGamers });
   }
 
   render() {
@@ -110,7 +112,7 @@ class GamerPanel extends React.Component {
           index={this.state.turnIndex}
           onTurnEnd={this.handleTurnEnd}
           currentGamer={currentGamer}
-
+          onRemove= {() => this.handleDeleteGamer(index)}
         />
       </li>
     ));
