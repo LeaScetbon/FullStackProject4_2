@@ -44,15 +44,13 @@ export class Gamer extends React.Component {
     if (this.state.number === 100) {
         const newScore = [...this.state.score, this.state.steps];
         this.setState({ score: newScore });
-        this.setState({ steps: 0 });
-        this.setState({ number: 100});
+       
         alert (this.state.name + ' won!');
     }
   }
 
   ButtonNewGame = () => {
     const newScore = [...this.state.score, this.state.steps];
-    this.setState({ score: newScore });
     this.setState({ steps: 0 });
     this.setState({ number: Math.floor(Math.random() * (99)) });
   }
@@ -80,7 +78,7 @@ export class Gamer extends React.Component {
         <h1 style={{ color: "rebeccapurple" }}>{this.props.isCurrentTurn === false ? "disabled" : "enabled"}</h1>
         <div>
           <button onClick={this.ButtonNewGame} disabled={(this.state.number != 100)}>New Game</button>
-          <button onClick={this.props.onRemove} disabled={(this.state.number != 100)}>Exit</button>
+          <button onClick={this.props.onRemove} disabled={(this.state.number != 100) || (!this.state.exist)}>Exit</button>
         </div>
       </div>
     );
